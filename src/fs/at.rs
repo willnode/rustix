@@ -43,7 +43,6 @@ use {crate::fs::Timestamps, crate::timespec::Nsecs};
 #[cfg(not(any(
     target_os = "espidf",
     target_os = "horizon",
-    target_os = "redox",
     target_os = "vita"
 )))]
 pub const UTIME_NOW: Nsecs = backend::c::UTIME_NOW as Nsecs;
@@ -54,7 +53,6 @@ pub const UTIME_NOW: Nsecs = backend::c::UTIME_NOW as Nsecs;
 #[cfg(not(any(
     target_os = "espidf",
     target_os = "horizon",
-    target_os = "redox",
     target_os = "vita"
 )))]
 pub const UTIME_OMIT: Nsecs = backend::c::UTIME_OMIT as Nsecs;
