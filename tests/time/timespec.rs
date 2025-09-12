@@ -1,6 +1,5 @@
 #[test]
 fn test_timespec_layout() {
-    #[cfg(not(target_os = "redox"))]
     #[cfg(feature = "fs")]
     use rustix::fs::{UTIME_NOW, UTIME_OMIT};
     use rustix::time::{Nsecs, Secs, Timespec};

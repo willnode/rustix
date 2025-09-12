@@ -27,7 +27,7 @@ bitflags! {
     }
 }
 
-#[cfg(not(any(target_os = "espidf", target_os = "horizon", target_os = "redox")))]
+#[cfg(not(any(target_os = "espidf", target_os = "horizon")))]
 bitflags! {
     /// `AT_*` constants for use with [`openat`], [`statat`], and other `*at`
     /// functions.
@@ -58,6 +58,7 @@ bitflags! {
         #[cfg(any(
             linux_kernel,
             target_os = "freebsd",
+            target_os = "redox",
             target_os = "fuchsia",
         ))]
         const EMPTY_PATH = bitcast!(c::AT_EMPTY_PATH);
@@ -295,7 +296,7 @@ bitflags! {
         const RDWR = bitcast!(c::O_RDWR);
 
         /// `O_NOCTTY`
-        #[cfg(not(any(target_os = "espidf", target_os = "horizon", target_os = "l4re", target_os = "redox", target_os = "vita")))]
+        #[cfg(not(any(target_os = "espidf", target_os = "horizon", target_os = "l4re", target_os = "vita")))]
         const NOCTTY = bitcast!(c::O_NOCTTY);
 
         /// `O_RSYNC`
@@ -309,7 +310,7 @@ bitflags! {
         const RSYNC = bitcast!(c::O_RSYNC);
 
         /// `O_SYNC`
-        #[cfg(not(any(target_os = "l4re", target_os = "redox")))]
+        #[cfg(not(target_os = "l4re"))]
         const SYNC = bitcast!(c::O_SYNC);
 
         /// `O_TRUNC`
@@ -604,7 +605,6 @@ impl FileType {
         target_os = "espidf",
         target_os = "haiku",
         target_os = "nto",
-        target_os = "redox",
         target_os = "vita"
     )))]
     #[inline]
